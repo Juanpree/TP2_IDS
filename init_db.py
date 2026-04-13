@@ -7,7 +7,7 @@ with open("usuarios.sql") as U:
 conn = mysql.connector.connect(
        host="localhost",
        user="root",
-       password="Juanpresas13@" 
+       password="root" 
 
 )
 cursor = conn.cursor()
