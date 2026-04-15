@@ -18,7 +18,7 @@ def listar_usuarios():
    if limit <= 0 or offset <0:
        cursor.close()
        conn.close()
-       return jsonify({"ERROR": "Parametros invalidos"}), 400
+       return mostrar_status_code(400)
    cursor.execute("SELECT COUNT(*) AS total FROM usuarios")
    total= cursor.fetchone()["total"]
 
@@ -37,7 +37,6 @@ def listar_usuarios():
        "_next": {"href": f"{base_url}?_offset={min(offset + limit, ultimo_offset)}"},
        "_last": {"href": f"{base_url}?_offset={ultimo_offset}"}
    }
-
    return jsonify({
        "usuarios": usuarios,
        "_links": links
