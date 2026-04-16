@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS ranking(
 INSERT INTO usuarios(nombre, email) values
 ("Javi","Javi@fi.uba.ar"),
 ("Marcos ","Marcos@fi.uba.ar"),
-("Jhoan","Jhoan@fi.uba.ar"),
-("Peter","Peter@fi.uba.ar");
+("Lucas","Lucas@fi.uba.ar"),
+("Sofia","Sofia@fi.uba.ar");
 
 INSERT INTO ranking(id_usuario) values
 (1),
