@@ -1,31 +1,52 @@
 
+errors = [
 
-def mostrar_status_code(code):
-    if code == 400:
-        return (f"""
-                code: {code}\n
-                messaje: Bad request.\n
-                level: ERROR.\n
-                description: El servidor no puede procesar tu solicitud, los datos ingresados pueden no ser correctos.\n  
-                """,400)
-    elif code == 404:
-        return (f"""
-                code: {code} \n
-                messaje: Not Found.\n
-                level: ERROR.\n
-                description: La pagina que buscas ya no existe, se ha movido o escribiste mal la direccion URL.\n   
-                """,404)
-    elif code == 200:
-        return (f"""
-                code: {code}.\n
-                messaje: OK.\n
-                level: INFO.\n
-                description: Tu solicitud se procesó con éxito.\n
-                """,200)
-    elif code == 201:
-        return (f"""
-                code: {code}.\n
-                messaje: Created.\n
-                level: INFO.\n
-                description: Solicitud realizada con éxito, se ha creado o cambiado un recurso en el servidor.\n
-                """,201)
+    {   
+        "code": "400.",
+        "messaje": "Bad request.",
+        "level": "ERROR.",
+        "description": "El servidor no puede procesar tu solicitud, los datos ingresados pueden no ser correctos.\n"
+    },
+    {   
+        "code": "404.",
+        "messaje": "Not found.",
+        "level": "ERROR.",
+        "description": "La pagina que buscas ya no existe, se ha movido o escribiste mal la direccion URL.\n"
+    },
+    {   
+        "code": "409.",
+        "messaje": "Conflict.",
+        "level": "ERROR.",
+        "description": "Los datos ingresados ya existen."
+    },
+    {   
+        "code": "500.",
+        "messaje": "Internal Server Error.",
+        "level": "ERROR.",
+        "description": "Fallo inesperado del servidor, intenta recargar la pagina."
+    }
+
+]
+
+status_ok = [
+
+    {   
+        "code": "200.",
+        "messaje": "OK.",
+        "level": "INFO.",
+        "description": "Tu solicitud se procesó con éxito."
+    },
+    {   
+        "code": "201.",
+        "messaje": "Created.",
+        "level": "INFO.",
+        "description": "Solicitud realizada con éxito, se ha creado o cambiado un recurso en el servidor."
+    },
+    {   
+        "code": "204.",
+        "messaje": "No content.",
+        "level": "INFO.",
+        "description": "Solicitud procesada con exito pero NO hay información disponible para mostrar, no existe."
+    }
+
+]

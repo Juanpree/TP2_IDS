@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS usuarios(
 );
 
 CREATE TABLE IF NOT EXISTS ranking(
-    id INT PRIMARY KEY AUTO_INCREMENT,
     id_usuario INT,
     puntos INT NULL DEFAULT 0,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
