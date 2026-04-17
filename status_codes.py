@@ -29,3 +29,17 @@ def mostrar_status_code(code):
                 level: INFO.\n
                 description: Solicitud realizada con éxito, se ha creado o cambiado un recurso en el servidor.\n
                 """,201)
+    elif code == 409:
+        return (f"""
+                code: {code}.\n
+                message: error de conflicto .\n
+                level: ERROR.\n
+                description: ese registro ya existe y no puede haber dos igual (choque de datos).\n
+                """,409)
+    elif code == 500:
+        return (f"""
+                code: {code}.\n
+                message: Internal Server Error.\n
+                level: ERROR.\n
+                description: algo se rompió por dentro y el servidor no sabe como explicarlo.\n
+                """,500)

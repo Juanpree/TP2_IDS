@@ -42,21 +42,37 @@ def listar_usuarios():
        "_links": links
        }), 200
 
-@app.route("/usuarios", methods = ["POST"])
-def agregar_usuario():
-    conn = get_connection()
-    cursor = conn.cursor(dictionary=True)
-    data = request.json
+@app.route('/usuarios', methods=['POST'])
+def crear_usuario():
+    data = request.get_json()
     nombre = data.get("nombre")
     email = data.get("email")
+
+    
     if not nombre or not email:
         return mostrar_status_code(400)
 
-    cursor.execute("""INSERT INTO usuarios(nombre,email)VALUES(%s, %s)""",(nombre,email))
-    conn.commit()
-    cursor.close()
-    conn.close()
-    return mostrar_status_code(201)
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    try:
+        #aqui compruebo si existe el email ingresado, si existe va a ver un conflicto interno con error 409 
+        cursor.execute("SELECT id FROM usuarios WHERE email = %s", (email,))
+        if cursor.fetchone():
+            return mostrar_status_code(409)
+
+
+        cursor.execute("INSERT INTO usuarios (nombre, email) VALUES (%s, %s)", (nombre, email))
+        conn.commit()
+        
+        return mostrar_status_code(201)
+
+    except:
+        return mostrar_status_code(500)
+    
+    finally:
+        cursor.close()
+        conn.close()
 
 @app.route("/usuarios/<int:id>", methods = ["GET"])
 def obtener_usuario_por_id(id):
