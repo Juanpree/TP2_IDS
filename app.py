@@ -61,16 +61,7 @@ def agregar_usuario():
     email = data.get("email")
 
     if not nombre or not email:
-        return jsonify(errors[0]),400
-    
-    cursor.execute("""
-                   SELECT id FROM usuarios WHERE email = %s
-                   """,(email,))
-    usuario_existente = cursor.fetchone()
-
-    if usuario_existente:
-         return jsonify(errors[2]),409
-
+        return mostrar_status_code(400)
     cursor.execute("""INSERT INTO usuarios(nombre,email)VALUES(%s, %s)""",(nombre,email))
     conn.commit()
     cursor.close()
