@@ -1,8 +1,6 @@
-
-
 from flask import jsonify, request, Blueprint
 from db import get_connection
-from status_codes import errors, status_ok
+from status_codes import errors
 
 
 usuarios_bp = Blueprint("usuarios",__name__)
