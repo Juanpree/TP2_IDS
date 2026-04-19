@@ -120,7 +120,7 @@ def borrar_usuario(id):
     filas_borradas = cursor.rowcount
     
     if filas_borradas == 0:
-         return jsonify({"errors":[errors[1]]}),404
+         return jsonify({"errors":errors[1]}),404
     
     cursor.close()
     conn.close()
