@@ -1,13 +1,12 @@
 import mysql.connector
 
-
 with open("usuarios.sql") as U:
     sql = U.read()
 
 conn = mysql.connector.connect(
        host="localhost",
        user="root",
-       password="root" 
+       password="Root123!" 
 )
 cursor = conn.cursor()
 
